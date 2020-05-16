@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
   
    <div align="center">
-        <h1>Edit Employee</h1>  
+        <h1>Edit Product</h1> <h4><a href="/logout">logout</a></h4>
        <form:form method="POST" action="/mvc/admin/editsave">    
         <table >    
         <tr>  

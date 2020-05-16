@@ -24,12 +24,12 @@ public class MvcProductService {
 	@Autowired
 	RestTemplate restTemplate;
 	
+	
 	//method to invoke GET method in RestController
 	public List<Product> getAllProducts() throws IOException
 	{
 		List<Product> productList = null;
 		String URI = "http://localhost:8080/rest/products";
-		//RestTemplate restTemplate = new RestTemplate();
 		String response = restTemplate.getForObject(URI, String.class);
 		ObjectMapper mapper = new ObjectMapper();
         productList = mapper.readValue(response, new TypeReference<List<Product>>(){});
@@ -43,7 +43,6 @@ public class MvcProductService {
 	//method to invoke POST method in RestController
 	public void addProduct(Product product) throws IOException
 	{
-		//RestTemplate restTemplate = new RestTemplate();
 		HttpEntity<Product> request = new HttpEntity<Product>(product);
 		restTemplate.postForObject("http://localhost:8080/rest/addproduct", request, Product.class);
 	    
@@ -52,7 +51,6 @@ public class MvcProductService {
 	//method to invoke PUT method in RestController
 	public void updateProduct(Product product)
 	{
-		//RestTemplate restTemplate = new RestTemplate();
 		String URI = "http://localhost:8080/rest/editproduct/{id}";
 		Map<String, String> params = new HashMap<String, String>();
 	    params.put("id", Integer.toString(product.getId()));
@@ -62,7 +60,6 @@ public class MvcProductService {
 	//method to invoke DELETE method in RestController
 	public void deleteProduct(int productId)
 	{
-		//RestTemplate restTemplate = new RestTemplate();
 		String URI = "http://localhost:8080/rest/deleteproduct/"+productId;
 		restTemplate.delete(URI);
 	}

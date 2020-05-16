@@ -1,7 +1,10 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>    
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
+<div>
+	<h4><a href="/mvc/home">Home</a></h4>
+</div>   
   <div align="center">
-        <h1>Add New Product</h1>  
+        <h1>Add New Product</h1> <h4><a href="/logout">logout</a></h4> 
        <form:form method="post" action="save">    
         <table > 
         <tr style="visibility:hidden;">    

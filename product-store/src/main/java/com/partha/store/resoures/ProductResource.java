@@ -17,9 +17,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.partha.store.SwaggerConfig;
 import com.partha.store.dao.ProductDao;
 import com.partha.store.models.Product;
 
+
+import io.swagger.annotations.Api;
+
+@Api(tags = {SwaggerConfig.TAG_1})
 @RestController
 @RequestMapping("/rest")
 public class ProductResource {

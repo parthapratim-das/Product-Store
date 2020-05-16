@@ -25,8 +25,18 @@
 }
 </style>
 <body>
+<div>
+	<h4><a href="/mvc/home">Home</a></h4>
+</div> 
 <div align="center">
     <h1>Product List</h1>
+    <div align="center">
+    	<c:choose>
+		<c:when test="${role == 'ROLE_ADMIN'}">
+			<h4><a href="/logout">logout</a></h4>
+		</c:when>
+	</c:choose>
+        </div> 
     <br/><br/>
     
      <!-- ============== Table with population of data ================= -->    
