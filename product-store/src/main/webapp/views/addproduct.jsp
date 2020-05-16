@@ -1,10 +1,8 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
-<div>
-	<h4><a href="/mvc/home">Home</a></h4>
-</div>   
+<%@ include file = "../views/common/commonheader.jsp" %>   
   <div align="center">
-        <h1>Add New Product</h1> <h4><a href="/logout">logout</a></h4> 
+        <h1>Add New Product</h1> 
        <form:form method="post" action="save">    
         <table > 
         <tr style="visibility:hidden;">    
@@ -34,3 +32,4 @@
         </table>    
        </form:form> 
      </div>   
+     <%@ include file = "../views/common/commonfooter.jsp" %>

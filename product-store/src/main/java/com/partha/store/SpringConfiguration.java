@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -38,7 +39,7 @@ public class SpringConfiguration extends WebSecurityConfigurerAdapter{
 		.antMatchers("/mvc/admin/**").hasRole("ADMIN")
 		.antMatchers("/mvc/products/").permitAll()
 		.antMatchers("/mvc/home/").permitAll()
-		//.antMatchers("/rest/**").permitAll()
+		.antMatchers("webjars/**").permitAll()
 		.and()
 		.formLogin()
 		.and().logout()
@@ -46,10 +47,8 @@ public class SpringConfiguration extends WebSecurityConfigurerAdapter{
         .logoutSuccessUrl("/mvc/home/")
 		.invalidateHttpSession(true)
         .deleteCookies("JSESSIONID")
-        .clearAuthentication(true)
-		;
-		//.and()
-		//.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login");;
+        .clearAuthentication(true);
 	}
+	
 
 }

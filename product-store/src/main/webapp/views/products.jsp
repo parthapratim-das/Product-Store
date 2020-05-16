@@ -16,7 +16,8 @@
 	<script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Employee Manager</title>
+<title>Product Manager</title>
+<%@ include file = "../views/common/commonheader.jsp" %>
 </head>
 <style>
 	#add{
@@ -26,17 +27,10 @@
 </style>
 <body>
 <div>
-	<h4><a href="/mvc/home">Home</a></h4>
+	<!-- <h4><a href="/mvc/home">Home</a></h4> -->
 </div> 
 <div align="center">
     <h1>Product List</h1>
-    <div align="center">
-    	<c:choose>
-		<c:when test="${role == 'ROLE_ADMIN'}">
-			<h4><a href="/logout">logout</a></h4>
-		</c:when>
-	</c:choose>
-        </div> 
     <br/><br/>
     
      <!-- ============== Table with population of data ================= -->    
@@ -84,11 +78,14 @@
 <div id="add" class="w3-container">
 	 <c:choose>
 		<c:when test="${role == 'ROLE_ADMIN'}">
+		 <div class = "btn-default">
 			<a href="/mvc/admin/add">
-		     	<button class="w3-button w3-circle w3-teal w3-card-4">Add</button>
-		     </a> 
+         		<button type = "button" class="btn btn-primary">Add Product</button>
+		     </a>
+		  </div> 
 		</c:when>
 	</c:choose>
  </div> 
 </body>
+<%@ include file = "../views/common/commonfooter.jsp" %>
 </html>
