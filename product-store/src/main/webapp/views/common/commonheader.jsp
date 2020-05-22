@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
  <script src="/webjars/jquery/3.1.1/jquery.min.js"></script>
         <script src="/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
-        <title>WebJars Demo</title>
+        <title></title>
         <link rel="stylesheet"
           href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" />
 </head>
@@ -32,7 +32,7 @@
     <ul class="nav navbar-nav navbar-right">
       <!-- <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li> -->
       <c:choose>
-		<c:when test="${role == 'ROLE_ADMIN'}">
+		<c:when test="${role == '[ROLE_ADMIN]'}">
 			<li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
 		</c:when>
 	</c:choose>

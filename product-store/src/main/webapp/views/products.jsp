@@ -60,7 +60,7 @@
             <td>${element.price}</td> 
             <td>${element.category}</td> 
             <c:choose>
-			    <c:when test="${role == 'ROLE_ADMIN'}">
+			    <c:when test="${role == '[ROLE_ADMIN]'}">
 			        <td>
                     	<a href="/mvc/admin/edit/${element.id}">Edit</a>
                     &nbsp;&nbsp;&nbsp;
@@ -77,7 +77,7 @@
 </div>  
 <div id="add" class="w3-container">
 	 <c:choose>
-		<c:when test="${role == 'ROLE_ADMIN'}">
+		<c:when test="${role == '[ROLE_ADMIN]'}">
 		 <div class = "btn-default">
 			<a href="/mvc/admin/add">
          		<button type = "button" class="btn btn-primary">Add Product</button>

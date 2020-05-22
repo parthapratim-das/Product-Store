@@ -8,6 +8,7 @@ import org.apache.commons.logging.LogFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -61,11 +62,11 @@ public class MvcController {
 	//Admin product management methods starts here
 	
 	@RequestMapping("/admin/products")
-	public ModelAndView loadAdminProducts()
+	public ModelAndView loadAdminProducts(Authentication authentication)
 	{
 		logger.info("Inside MVC Controller loadAdminProducts() method");
 		ModelAndView mv = new ModelAndView("products");
-		mv.addObject("role", "ROLE_ADMIN");
+		mv.addObject("role", authentication.getAuthorities());
 		List<Product> listProducts = new ArrayList<Product>();
 		try {
 			listProducts = mvcProductService.getAllProducts();
@@ -80,10 +81,10 @@ public class MvcController {
 	}
 	
 	@RequestMapping("/admin/add")
-	public ModelAndView addProducts()
+	public ModelAndView addProducts(Authentication authentication)
 	{
 		ModelAndView mv = new ModelAndView("addproduct");
-		mv.addObject("role", "ROLE_ADMIN");
+		mv.addObject("role", authentication.getAuthorities());
 		mv.addObject("command", new Product());
 		return mv;
 	}
@@ -102,10 +103,10 @@ public class MvcController {
     }  
 	
 	@RequestMapping("/admin/edit/{id}")
-	public ModelAndView editProducts(@PathVariable int id, Product product)
+	public ModelAndView editProducts(@PathVariable int id, Product product, Authentication authentication)
 	{
 		ModelAndView mv = new ModelAndView("editproduct");
-		mv.addObject("role", "ROLE_ADMIN");
+		mv.addObject("role", authentication.getAuthorities());
 		List<Product> listProducts = new ArrayList<Product>();
 		try {
 			listProducts = mvcProductService.getAllProducts();
