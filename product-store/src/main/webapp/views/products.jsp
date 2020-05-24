@@ -31,6 +31,47 @@
 </div> 
 <div align="center">
     <h1>Product List</h1>
+    <div>
+    <table>
+    <tr><td>
+	    <h4>Filter Category :</h4>
+	   </td>
+	   <c:choose>
+	    <c:when test="${role == '[ROLE_ADMIN]'}">
+		   <td>
+		    	<form action="/mvc/admin/productByCategory"> 
+				    <select name="category">
+				         <option value="all"> 
+	          		Show All 
+	     		</option>
+				  <c:forEach var="category" items="${listCategory}">
+				    <option value="${category.id}">${category.categoryname}</option>
+				  </c:forEach>
+				  </select>
+				  <input type="submit" value="submit" />
+				</form>
+		    </td>
+		 </c:when>
+		 <c:otherwise>
+		 </
+		 	<td>
+		    	<form action="/mvc/productByCategory"> 
+				    <select name="category">
+				         <option value="all"> 
+	          		Show All 
+	     		</option>
+				  <c:forEach var="category" items="${listCategory}">
+				    <option value="${category.id}">${category.categoryname}</option>
+				  </c:forEach>
+				  </select>
+				  <input type="submit" value="submit" />
+				</form>
+		    </td>
+		 </c:otherwise>
+	   </c:choose>
+	    </tr>
+	    </table>
+	   </div>
     <br/><br/>
     
      <!-- ============== Table with population of data ================= -->    
@@ -58,7 +99,7 @@
             <td>${element.productcode}</td>  
             <td>${element.productname}</td>  
             <td>${element.price}</td> 
-            <td>${element.category}</td> 
+            <td>${element.category.categoryname}</td> 
             <c:choose>
 			    <c:when test="${role == '[ROLE_ADMIN]'}">
 			        <td>

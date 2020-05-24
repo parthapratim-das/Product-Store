@@ -10,7 +10,9 @@ import org.springframework.http.HttpEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.partha.store.models.Product;
 import com.partha.store.resoures.ProductResource;
@@ -62,6 +64,17 @@ public class MvcProductService {
 	{
 		String URI = "http://localhost:8080/rest/deleteproduct/"+productId;
 		restTemplate.delete(URI);
+	}
+
+
+	public List<Product> getProductsListByCategory(String category) throws IOException, JsonProcessingException {
+		List<Product> productList = null;
+		String URI = "http://localhost:8080/rest/productbycategory/"+category;
+	    
+		String response = restTemplate.getForObject(URI, String.class);
+		ObjectMapper mapper = new ObjectMapper();
+        productList = mapper.readValue(response, new TypeReference<List<Product>>(){});
+		return productList;
 	}
 
 }

@@ -23,8 +23,17 @@
          </tr>   
          <tr>    
           <td>Category :</td>    
-          <td><form:input path="category" /></td>  
-         </tr>   
+          <td>
+          <form:select path="category" value="Select Category">
+          	  <option value="none" selected disabled> 
+          		Select an Option 
+     		</option>
+			  <c:forEach var="category" items="${listCategory}">
+			    <option value="${category.id}">${category.categoryname}</option>
+			  </c:forEach>
+		  </form:select>
+          </td>  
+         </tr> 
          <tr>    
           <td> </td>    
           <td><input type="submit" value="Save" /></td>    

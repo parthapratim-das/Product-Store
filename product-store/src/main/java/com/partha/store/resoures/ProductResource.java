@@ -18,9 +18,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.partha.store.SwaggerConfig;
+import com.partha.store.dao.CategoryDao;
 import com.partha.store.dao.ProductDao;
 import com.partha.store.models.Product;
-
+import com.partha.store.models.ProductCategory;
 
 import io.swagger.annotations.Api;
 
@@ -32,10 +33,15 @@ public class ProductResource {
 	@Autowired
 	private ProductDao productDao;
 	
+	@Autowired
+	private CategoryDao categoryDao;
+	
 	@GetMapping("/products")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Product> getAllProducts()
 	{
+		List<Product> testList = productDao.getAllProducts();
+		System.out.println(testList);
 		return productDao.getAllProducts();
 	}
 	
@@ -43,6 +49,7 @@ public class ProductResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Product addProduct(@RequestBody Product product)
 	{
+		//ProductCategory prodCategory = categoryDao.findCategoryById(product.getCategory_id());
 		return productDao.save(product);
 	}
 	
@@ -72,6 +79,12 @@ public class ProductResource {
 			return product;
 		}
 		return null;
+	}
+	
+	@GetMapping("/productbycategory/{category}")
+	public List<Product> getProductByCategory(@PathVariable("category") String category)
+	{
+		return productDao.getProductByCategory(category);
 	}
 
 }

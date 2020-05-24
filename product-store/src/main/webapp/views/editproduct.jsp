@@ -22,8 +22,16 @@
           <td><form:input path="price" /></td>  
          </tr>   
          <tr>    
-          <td>Category :</td>    
-          <td><form:input path="category" /></td>  
+          <td>Category :</td> 
+          <td><form:select path="category">
+			  <c:forEach var="category" items="${listCategory}">
+			  	<c:if test="${categoryname == category.categoryname}">
+			  		<option value="${category.id}" selected>${category.categoryname}</option>
+			  	</c:if>
+			    <option value="${category.id}">${category.categoryname}</option>
+			  </c:forEach>
+		  </form:select> 
+		  </td> 
          </tr>   
            
          <tr>    

@@ -33,8 +33,12 @@
       <!-- <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li> -->
       <c:choose>
 		<c:when test="${role == '[ROLE_ADMIN]'}">
-			<li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+			<li><a><span class="glyphicon glyphicon-user"></span> Welcome,${user}</a></li>
+			<li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 		</c:when>
+		<c:otherwise>
+			<li><a><span class="glyphicon glyphicon-user"></span> Welcome,Visitor</a></li>
+		</c:otherwise>
 	</c:choose>
       
     </ul>
